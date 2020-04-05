@@ -36,10 +36,10 @@ check_pid_exists () {
     ps  "$1" 2>&1 > /dev/null
     exists=$?
     # it exists
-    [ "$exists" -eq "0" ] && exit 0
+    [ "$exists" -eq "0" ] && pkill -P $1 && notify_task "Cancelled watch PID: $1" && check_pid_exists $1 && exit 0
     # assume any error code means it doesn't exist
     # delete the file and continue execution
-    rm "$PIDFILE_DIRECTORY/PID"
+    rm -f "$PIDFILE_DIRECTORY/PID"
 }
 
 mkdir -p $PIDFILE_DIRECTORY
