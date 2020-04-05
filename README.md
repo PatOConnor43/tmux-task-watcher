@@ -7,6 +7,9 @@ notified once it has finished. This is useful for long running builds or async
 tasks that you need to know have finished but don't want to consistently check
 on them.
 
+## Demo
+[![asciicast](https://asciinema.org/a/316769.svg)](https://asciinema.org/a/316769)
+
 ## Features
 - [x] Configurable key start watcher
 - [x] Support for macOS notifications using AppleScript
