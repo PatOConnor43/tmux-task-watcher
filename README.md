@@ -8,11 +8,11 @@ tasks that you need to know have finished but don't want to consistently check
 on them.
 
 ## Features
-[x] Configurable key start watcher
-[x] Support for macOS notifications using AppleScript
-[ ] Support for watching multiple tasks
-[ ] See history of watched jobs (command that was run, from where, etc.)
-[ ] Cancel watching
+- [x] Configurable key start watcher
+- [x] Support for macOS notifications using AppleScript
+- [ ] Support for watching multiple tasks
+- [ ] See history of watched jobs (command that was run, from where, etc.)
+- [ ] Cancel watching
 
 ## Install
 ### [TPM](https://github.com/tmux-plugins/tpm) (Recommend)
@@ -31,6 +31,6 @@ The default key binding is `W`, it can be modified by setting
 ## Options
 | Option                               | Description                                | Default  | Example                                            |
 | ------                               | -----------                                | -------- | --------                                           |
-| @tmux-task-watcher-key               | Controls the key used to open the switcher | `O`      | set -g @tmux-task-watcher 'x'                      |
+| @tmux-task-watcher-key               | Controls the key used to open the switcher | `W`      | set -g @tmux-task-watcher 'x'                      |
 | @tmux-task-watcher-mac-notifications | Enables notifications via AppleScript      | `false`  | set -g @tmux-task-watcher-mac-notifications 'true' |
 
