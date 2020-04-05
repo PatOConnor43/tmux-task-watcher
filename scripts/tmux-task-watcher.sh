@@ -20,25 +20,13 @@ watch_command () {
 }
 
 
-# $1: PID that started
-notify_task_started () {
-
+# $1: The text to notify
+notify_task () {
     if [ "$MAC_NOTIFIACTIONS" = "true" ]
     then
-        osascript -e "display notification \"Watching PID: $1\" with title \"tmux-task-watcher\""
+        osascript -e "display notification \"$1\" with title \"tmux-task-watcher\""
     else
-        tmux display-message "Watching PID: $1"
-    fi
-}
-
-# $1: PID that finished
-notify_task_finished () {
-
-    if [ "$MAC_NOTIFIACTIONS" = "true" ]
-    then
-        osascript -e "display notification \"PID $1 finished\" with title \"tmux-task-watcher\""
-    else
-        tmux display-message "PID $1 finished"
+        tmux display-message "$1"
     fi
 }
 
@@ -63,6 +51,6 @@ child_pid=${pid_tuple[0]}
 $(echo $BASHPID > "$PIDFILE_DIRECTORY/PID" && \
     watch_command $child_pid && \
     rm "$PIDFILE_DIRECTORY/PID" && \
-    notify_task_finished $child_pid) &
-notify_task_started $child_pid
+    notify_task "PID: $child_pid finished") &
+notify_task "Watching PID: $child_pid"
 
