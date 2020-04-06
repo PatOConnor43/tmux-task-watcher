@@ -46,7 +46,7 @@ mkdir -p $PIDFILE_DIRECTORY
 [ -f "$PIDFILE_DIRECTORY/PID" ] && check_pid_exists $(cat "$PIDFILE_DIRECTORY/PID")
 
 selected_pane_tuple=($(tmux list-panes -F '#{pane_active} #{pane_pid}' | grep "^1"))
-pid_tuple=($(ps -o pid,ppid | $GREP_COMMAND "[0-9]+[[:space:]]+${selected_pane_tuple[1]}"))
+pid_tuple=($(ps ax -o pid,ppid | $GREP_COMMAND "[0-9]+[[:space:]]+${selected_pane_tuple[1]}"))
 child_pid=${pid_tuple[0]}
 $(echo $BASHPID > "$PIDFILE_DIRECTORY/PID" && \
     watch_command $child_pid && \
